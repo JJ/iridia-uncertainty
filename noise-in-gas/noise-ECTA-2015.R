@@ -2,6 +2,7 @@
 library("ggplot2")
 library("RCurl") #To download stuff directly from the GitHub repo
 library(e1071) # for skewness and kurtosis
+library(ggthemes)
 # Now download stuff from noisy-ga repo
 made.data <- read.csv(text = getURL("https://raw.githubusercontent.com/JJ/noisy-ga/master/data/MADE/made-data.csv"))
 pacman.data <-  read.csv(text = getURL("https://raw.githubusercontent.com/JJ/noisy-ga/master/data/ms-pacman/pacman-fitness.csv"))
@@ -62,3 +63,5 @@ for ( i in c(1,25,50)) {
 
 ggplot(pm.s.k,aes(x=Skewness,y=Kurtosis,color=Gen))+geom_point()+scale_x_continuous(limits=c(-2,10))+scale_y_continuous(limits=c(-5,100))
 
+one.fitness <- made.data[made.data$Gen==128 & made.data$ID=='Id9',]
+ggplot(data=one.fitness,aes(one.fitness$Fitness))+geom_histogram()+theme_tufte()
