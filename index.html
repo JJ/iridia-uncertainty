@@ -42,33 +42,41 @@
       
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
+	<!-- slides start here -->
 	<section>
 	  <h1>Uncertainty in evolutionary computation</h1>
 	  <h2>Uncertainty ≠ Noise</h2>
 	  <p>JJ Merelo, <code>@jjmerelo</code> <a href="http://geneura.wordpress.com">GeNeura Team</a> / <a href="http://twitter.com/geneura">@geneura</a></p>
 	</section>
 	
-	<!-- slides start here -->
-	<section data-background='images/death-and-taxes.jpg'>
-	  <h1 class='bkg'>Just a few things are certain in life</h1>
-	  <h2 class='fragment bkg'>...<em>Fitness</em> is not one of them.</h2>
+	<section>
+	  <section data-background='images/death-and-taxes.jpg'>
+	    <h1 class='bkg'>Just a few things are certain in life</h1>
+	    <h2 class='fragment bkg'>...<em>Fitness</em> is not one of them.</h2>
+	  </section>
+	  
+	  <section data-background='images/noise.jpg' title='noise'>
+	    <h2 class='bkg'>There's no such thing as <em>crisp</em> fitness + noise</h2>
+	    <h1 class='bkg fragment'>Fitness is a statistical variable</h1>
+	  </section>
+	  
+	  <section><h3>Fitness:</h3>
+	    <img src='https://farm5.staticflickr.com/4113/5056343170_6e6de4d540_o_d.jpg' alt='Gaussian' style='height:500px'>
+	    <h2 class='fragment'>You wish</h2>
+	    <aside class='notes'>This is the usual approach to <em>noise</em>, thingking you have a normal distribution, which <em>widens</em> the perception of the crisp fitness.</aside>
+	  </section>
+
+	  <section><h1>Fitness:</h1>
+	  <img src='images/made-gen128-id9-fitness.png' alt='actual fitness histogram'  style='height:500px'>
+	  <aside class='notes'>This is the real image of the fitness in an optimization problem, an optimization of virtual worlds for creating characters in a game. It's not farfetched, and it's got a degree of complexity many deep learning problems can easily reach. There are many levels and sources of randomness to a point that it's almost impossible to find the <em>true</em> value</aside>
+	  </section>
 	</section>
 
-	<section data-background='images/noise.jpg' title='noise'>
-	  <h2 class='bkg'>There's no such thing as <em>crisp</em> fitness + noise</h2>
-	  <h1 class='bkg fragment'>Fitness is a statistical variable</h1>
-	</section>
-
-	<section><h1>Uncertainty might be like this</h1>
-	  <img src='https://farm5.staticflickr.com/4113/5056343170_6e6de4d540_o_d.jpg' alt='Gaussian'>
-	  <aside class='notes'>This is the usual approach to <em>noise</em>, thingking you have a normal distribution, which <em>widens</em> the perception of the crisp fitness.</aside>
-	</section>
-	
-	<section data-background='images/other-noise.jpg'
+	<section data-background='images/other-noise.jpg'>
 	  <section><h2>Usual approaches to uncertainty</h2>
 	    <h2 class='fragment bkg'>Implicit averaging</h2>
 	    <h2 class='fragment bkg'><em>Explicit</em> averaging</h2>
-	    
+	    <h3 class='fragment bkg'><em>Resampling...</em></h3>
 	  </section>
 	  
 	  <section>
@@ -78,73 +86,78 @@
 	  
 	  <section>
 	    <h1 class='bkg'>What's the shape and distribution of this variable</h1>
-	  <h2>So far: Gamma</h2>
+	    <h2>So far: Gamma</h2>
+	    <aside class='notes'>This is what we had established in our previous work.</aside>
 	  </section>
-
+	  
 	  <section>
 	    <h1>Is it always like that?</h1>
 	  </section>
 	</section>
 
-	<section>
-	  <h1>Let's look at <em>uncertain</em> problems
-	  </h1>
-	</section>
+<section>
+  <section>
+    <h1>Let's look at <em>uncertain</em> problems
+    </h1>
+  </section>
+  
+  <section>
+    <h1>Three problems</h1>
+    <h2 class='fragment'>Planet wars</h2>
+    <h2 class='fragment'>Ms. PacMan</h2>
+    <h2 class='fragment'>Procedural Backstory generation</h2>
+    <aside class='notes'>Every one of them has a particular
+      source of uncertainty. <ul>
+	<li>Planet wars evolves a FSA with action rates;
+	  besides, the initial planet in the game is random. The
+	  enemies are not deterministic either.</li>
+	<li>MsPacman evolves the ghost team, and they appear
+	  randomly, with the Pacman being able to change direction
+	  randomly too.</li>
+	<li>Procedural backstory generation uses an agent-based
+	  model to generate stories in a simulated world, those
+	  stories correspond to individuals in the evolved world
+	  and there are many sources of uncertainty, from the
+	  resources to the actions of the individuals
+	  themselves.</li>
+      </ul>
+    </aside>
+  </section>
+</section>
 
-	<section>
-	  <h1>Three problems</h1>
-	  <h2 class='fragment'>Planet wars</h2>
-	  <h2 class='fragment'>Ms. PacMan</h2>
-	  <h2 class='fragment'>Procedural Backstory generation</h2>
-	  <aside class='notes'>Every one of them has a particular
-	    source of uncertainty. <ul>
-	      <li>Planet wars evolves a FSA with action rates;
-	      besides, the initial planet in the game is random. The
-		enemies are not deterministic either.</li>
-	      <li>MsPacman evolves the ghost team, and they appear
-	      randomly, with the Pacman being able to change direction
-		randomly too.</li>
-	      <li>Procedural backstory generation uses an agent-based
-	      model to generate stories in a simulated world, those
-	      stories correspond to individuals in the evolved world
-	      and there are many sources of uncertainty, from the
-		resources to the actions of the individuals
-	      themselves.</li>
-	    </ul>
-	  </aside>
-	</section>
+<section>
+  <section>
+    <h3>Skewness and kurtosis characterize a distribution</h3>
+    <img src='images/Frechet_pdf.svg' alt='Frechet distribution'>
+  </section>
+  
+  <section>
+    <h3>MADE</h3>
+    <img src='noise-in-gas/figure/sk-made.png' alt='distribution for MADE'>
+  </section>
+  
+  <section>
+    <h3>Ms. PacMan</h3>
+    <img src='noise-in-gas/figure/sk-pacman.png' alt='distribution for MADE'>
+  </section>
+  
+  <section>
+    <h3>Planet Wars</h3>
+    <img src='noise-in-gas/figure/sk-planetwars.png' alt='distribution for MADE'>
+  </section>
 
-	<section>
-	  <h3>Skewness and kurtosis characterize a distribution</h3>
-	  <img src='images/Frechet_pdf.svg' alt='Frechet distribution'>
-	</section>
+</section>
 
-	<section>
-	  <h3>MADE</h3>
-	  <img src='noise-in-gas/figure/sk-made.png' alt='distribution for MADE'>
-	</section>
-
-	<section>
-	  <h3>Ms. PacMan</h3>
-	  <img src='noise-in-gas/figure/sk-pacman.png' alt='distribution for MADE'>
-	</section>
-
-	<section>
-	  <h3>Planet Wars</h3>
-	  <img src='noise-in-gas/figure/sk-planetwars.png' alt='distribution for MADE'>
-	</section>
-
-
-	<section><h1>Conclusions</h1>
-
-	  <h2 class='fragment'>Gaussian is not the norm.</h2>
-	  <h3 class='fragment'>... But evolution approaches it.</h3>
-
-	</section>
-
-	<section data-background='images/conclusions.JPG'>
-	  <h1 class='fragment bkg'>New selection procedures needed for uncertain fitness</h1>
-	</section>
+  <section><h1>Conclusions</h1>
+    
+    <h2 class='fragment'>Gaussian is not the norm.</h2>
+    <h3 class='fragment'>... But evolution approaches it.</h3>
+    
+  </section>
+  
+  <section data-background='images/conclusions.JPG'>
+    <h1 class='fragment bkg'>New selection procedures needed for uncertain fitness</h1>
+  </section>
 
 <!-- slides end here -->
 
