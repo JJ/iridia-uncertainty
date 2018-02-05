@@ -63,12 +63,21 @@
 	  <section><h3>Fitness:</h3>
 	    <img src='https://farm5.staticflickr.com/4113/5056343170_6e6de4d540_o_d.jpg' alt='Gaussian' style='height:500px'>
 	    <h2 class='fragment'>You wish</h2>
-	    <aside class='notes'>This is the usual approach to <em>noise</em>, thingking you have a normal distribution, which <em>widens</em> the perception of the crisp fitness.</aside>
+	    <aside class='notes'>This is the usual approach
+	    to <em>noise</em>, thinking you have a normal
+	    distribution, which <em>widens</em> the perception of the
+	    crisp fitness.</aside> 
 	  </section>
 
 	  <section><h1>Fitness:</h1>
 	  <img src='images/made-gen128-id9-fitness.png' alt='actual fitness histogram'  style='height:500px'>
-	  <aside class='notes'>This is the real image of the fitness in an optimization problem, an optimization of virtual worlds for creating characters in a game. It's not farfetched, and it's got a degree of complexity many deep learning problems can easily reach. There are many levels and sources of randomness to a point that it's almost impossible to find the <em>true</em> value</aside>
+	  <aside class='notes'>This is the real image of the fitness
+	  in an optimization problem, an optimization of virtual
+	  worlds for creating characters in a game. It's not
+	  farfetched, and it's got a degree of complexity many deep
+	  learning problems can easily reach. There are many levels
+	  and sources of randomness to a point that it's almost
+	  impossible to find the <em>true</em> value</aside> 
 	  </section>
 	</section>
 
@@ -87,7 +96,16 @@
 	  <section>
 	    <h1 class='bkg'>What's the shape and distribution of this variable</h1>
 	    <h2>So far: Gamma</h2>
-	    <aside class='notes'>This is what we had established in our previous work.</aside>
+	    <blockquote>MERELO, Juan J., et al. Studying and Tackling Noisy Fitness in Evolutionary Design of Game Characters. En IJCCI (ECTA). 2014. p. 76-85.</blockquote>
+	    <aside class='notes'>This is what we had established in
+	    our previous work. A gamma distribution is more general
+	    than a normal or Cauchy, but still a very different
+	    thing. But the main problem is that the gamma was
+	    different for every individual; it was very difficult to
+	    fit a single parameter to all individuals, and most
+	    individuals do not actually follow this gamma
+	    distribution. This was just a first approximation to the
+	    problem. .</aside>
 	  </section>
 	  
 	  <section>
